@@ -3,12 +3,9 @@
         <exec command="./tests/start_server.sh" checkreturn="true"/>
     </target>
     <target name="test" depends="start-server">
-        <exec command="./vendor/bin/phpunit" passthru="true" checkreturn="true"/>
-    </target>
-    <target name="phpcs">
-        <exec executable="./vendor/bin/phpcs">
-            <arg value="--standard=./ruleset.xml"/>
-            <arg value="src"/>
-        </exec>
+        <exec command="./vendor/bin/phpunit --coverage-clover 'build/reports/clover.xml'"
+              passthru="true"
+              checkreturn="true"
+        />
     </target>
 </project>
