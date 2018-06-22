@@ -1,0 +1,41 @@
+{
+  "name": "urbanindo/yii2-mail-object",
+  "description": "This wraps Yii2 mailer as an object",
+  "type": "library",
+  "require": {
+    "php": ">=7.0",
+    "yiisoft/yii2": ">=2.0.13"
+  },
+  "minimum-stability": "stable",
+  "require-dev": {
+    "phing/phing": "~2.16.1",
+    "phpunit/phpunit": "~6.5.8",
+    "phpunit/php-code-coverage": "~5.3.2",
+    "yiisoft/yii2-swiftmailer": "~2.0.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Petra Barus",
+      "email": "petra.barus@gmail.com"
+    }
+  ],
+  "config":{
+    "fxp-asset": {
+      "installer-paths": {
+        "npm-asset-library": "vendor/npm",
+        "bower-asset-library": "vendor/bower"
+      }
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "UrbanIndo\\Yii2\\MailObject\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\UrbanIndo\\Yii2\\MailObject\\": "tests/"
+    }
+  }
+}
