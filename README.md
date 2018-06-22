@@ -2,6 +2,8 @@
 
 This wraps mail object that can be instantiated rather standalone.
 
+[![Build Status](https://travis-ci.org/urbanindo/yii2-mail-object.svg)](https://travis-ci.org/urbanindo/yii2-mail-object)
+
 ## Usage
 
 Create new mail object class using `MailObject`.
