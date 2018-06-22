@@ -1,6 +1,6 @@
 <project name="yii2-mail-object" default="test" basedir=".">
     <target name="start-server">
-        <exec command="./test/start_server.sh"/>
+        <exec command="./tests/start_server.sh" checkreturn="true"/>
     </target>
     <target name="test" depends="start-server">
         <exec command="./vendor/bin/phpunit" passthru="true" checkreturn="true"/>
