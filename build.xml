@@ -1,0 +1,14 @@
+<project name="yii2-mail-object" default="test" basedir=".">
+    <target name="start-server">
+        <exec command="./test/start_server.sh"/>
+    </target>
+    <target name="test" depends="start-server">
+        <exec command="./vendor/bin/phpunit" passthru="true" checkreturn="true"/>
+    </target>
+    <target name="phpcs">
+        <exec executable="./vendor/bin/phpcs">
+            <arg value="--standard=./ruleset.xml"/>
+            <arg value="src"/>
+        </exec>
+    </target>
+</project>
