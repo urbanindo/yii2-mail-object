@@ -112,17 +112,30 @@ abstract class MailObject extends BaseObject
     private function initViews()
     {
         $mailer = $this->getMailer();
-        $layoutDirectory = $this->getLayoutDirectory();
-        $mailer->htmlLayout = $layoutDirectory . 'html.php';
-        $mailer->textLayout = $layoutDirectory . 'text.php';
+        $this->initLayoutDirectories();
         $mailer->viewPath = $this->getViewPath();
+    }
+
+    protected function initLayoutDirectories()
+    {
+        $layoutDirectory = $this->getLayoutDirectory();
+        $mailer = $this->getMailer();
+        if (in_array('html', $this->viewTypes)) {
+            $mailer->htmlLayout = $layoutDirectory . 'html.php';
+        }
+        if (in_array('text', $this->viewTypes)) {
+            $mailer->textLayout = $layoutDirectory . 'text.php';
+        }
     }
 
     /**
      * @return mixed[]
      */
-    private function getViews(): array
+    protected function getViews(): array
     {
+        if (!empty($this->viewTypes)) {
+            return array_combine($this->viewTypes, $this->viewTypes);
+        }
         return [
             'html' => 'html',
             'text' => 'text'
