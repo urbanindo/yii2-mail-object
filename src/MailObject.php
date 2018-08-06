@@ -30,6 +30,11 @@ abstract class MailObject extends BaseObject
     public $viewTypes = ['html', 'text'];
 
     /**
+     * @var string
+     */
+    public $tags = [];
+
+    /**
      * @return string[]
      */
     protected function getSender(): array
@@ -158,6 +163,28 @@ abstract class MailObject extends BaseObject
     {
         $this->initViews();
         $this->composeMessage();
-        return $this->_message->send();
+        return $this->sendWithEvents();
+    }
+
+    private function sendWithEvents(): bool
+    {
+        if (!$this->beforeSend()) {
+            return false;
+        }
+        $isSendSuccess = $this->_message->send();
+        if ($isSendSuccess) {
+            $this->afterSend();
+        }
+        return $isSendSuccess;
+    }
+
+    protected function beforeSend(): bool
+    {
+        return true;
+    }
+
+    protected function afterSend(): bool
+    {
+        return true;
     }
 }
